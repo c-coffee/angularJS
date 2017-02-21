@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    <h1>购物车计算器</h1>
+    <button class="btn btn-default" ng-click="addProduct()">添加商品</button>
+    <div class="alert alert-success" ng-repeat="product in cart">
+        单价：<span>{{product.price}}</span>
+        数量：<input type="number" min="0" ng-model="product.num">
+        总价：<span>{{product.price * product.num}}</span>
+    </div>
+    <div class="alert alert-danger">总价：{{total()}}</div>
+</div>
+<script src="js/angular.js"></script>
+<script src="js/myApp.js"></script>
+</body>
+</html>
