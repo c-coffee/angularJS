@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script>
+        var salary = 3000;
+
+        document.write(salary);
+//        setInterval(function(){
+//            salary++;
+//            console.log(salary);
+//        },1000);
+    </script>
+</head>
+<body>
+<div class="container" ng-controller="myCtrl1">
+    {{age}}
+    <ul>
+        <li ng-repeat="num in nums">{{num}}</li>
+    </ul>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",[])
+        .controller("myCtrl1",function($scope,$interval){
+            $scope.age = 20;
+            $scope.nums = [2.3,4.54,5.54,5.55];
+            $interval(function(){
+                $scope.age++;
+                $scope.nums.push(Math.ceil(Math.random()*100));
+                console.log($scope.age);
+            },1000);
+        });
+</script>
+</body>
+</html>

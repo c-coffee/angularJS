@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="alert alert-danger" ng-controller="myCtrl1">
+        <p>{{age}}</p>
+        <p>{{uName}}</p>
+    </div>
+    <div class="alert alert-info" ng-controller="myCtrl2">
+        <p>{{age}}</p>
+        <p>{{uName}}</p>
+    </div>
+    <div class="alert alert-warning" ng-controller="myCtrl3">
+        <p>{{age}}</p>
+    </div>
+    <div class="alert alert-danger" ng-controller="myCtrl1">
+        <p>{{age}}</p>
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl1',function($scope,$rootScope){
+            console.log('控制器1开始创建');
+            console.log($scope);
+            $scope.age = 10;
+            $rootScope.uName = '张三';
+            console.log('控制器1创建完成');
+        })
+        .controller('myCtrl2',function($scope){
+            console.log('控制器2开始创建');
+            console.log($scope);
+            console.log('控制器2创建完成');
+        })
+        .controller('myCtrl3',function($scope){
+            console.log('控制器3开始创建');
+            console.log($scope);
+            console.log('控制器3创建完成');
+        })
+</script>
+</body>
+</html>

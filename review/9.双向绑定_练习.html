@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    <h1>购物车计算器：</h1>
+    <hr>
+    单价：<input type="text" ng-model="price" value="0" class="form-control">
+    数量：<input type="text" ng-model="num" value="0" class="form-control">
+    <div class="alert alert-info">
+        小计：{{price*num}}
+    </div>
+    <h1>同意条款按钮</h1>
+    <hr>
+    <div class="alert alert-warning">
+        <input type="checkbox" ng-model="agree"> 同意本站条款
+        <a href="#" ng-if="agree">注册</a>
+    </div>
+    <h1>选择头像</h1>
+    <hr>
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp", []).controller("myCtrl", function ($scope) {
+        $scope.price = 0;
+        $scope.num = 0;
+    });
+</script>
+</body>
+</html>

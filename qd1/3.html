@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl2">
+    <h1>图片切换</h1>
+    <hr>
+    {{age}}
+    <img ng-src="{{imgSrc}}">
+    <div class="alert alert-info">
+        <button class="btn btn-info">前一张</button>
+        <button class="btn btn-info">后一张</button>
+    </div>
+</div>
+<div class="container" ng-controller="myCtrl1">
+    <h1>点击计数器</h1>
+    <hr>
+    <button class="btn btn-primary" ng-click="clickCount()">点我计数</button>
+    <p></p>
+    <div class="alert alert-danger">
+        {{count}}
+    </div>
+</div>
+<hr>
+
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",[])
+        .controller("myCtrl1",function($scope,$interval){
+            $scope.count = 0;
+            $scope.clickCount = function(){
+                $scope.count++;
+            };
+        })
+        .controller("myCtrl2",function($scope,$interval){
+            $scope.age = 10;
+            $scope.imgSrc="img/1.jpg";
+            var index = 0;
+            var imgs = ['1.jpg','2.jpg','3.jpg'];
+            $scope.imgSrc = "img/" + imgs[index];
+
+        });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="mCtrl1">
+
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("module1",['ng']).controller('mCtrl1',function($scope){
+        console.log($scope)
+    });
+    angular.module("module2",['ng']);
+    angular.module("myApp",['ng','module1','module2'])
+        .controller('myCtrl',function($scope){
+        })
+</script>
+</body>
+</html>

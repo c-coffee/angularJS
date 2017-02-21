@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl1">
+    {{name}}
+
+    MVC
+</div>
+<div class="container" ng-controller="myCtrl2">
+    {{isLogin}}
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",[])
+        .controller("myCtrl1",function($scope,$rootScope){
+            //取得用户名密码，发送到后台验证。
+            //验证结果返回。
+            $rootScope.isLogin = true;
+            $scope.name = '张三';
+            $rootScope.name='李四';
+            console.log($scope,$rootScope);
+        })
+        .controller("myCtrl2",function(){
+
+        });
+</script>
+</body>
+</html>

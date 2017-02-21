@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+    <script>
+        var salary = 3000;
+        document.write(salary);
+        salary++;
+        setInterval(function(){
+            salary++;
+            console.log("salary:" + salary);
+        },1000)
+    </script>
+</head>
+<body>
+<div class="container" ng-controller="myCtrl1">
+    <h1>四大特性之 双向数据绑定</h1>
+    <div class="alert alert-info">
+        <p>Age:{{age}}</p>
+    </div>
+    <div ng-if="isMember" class="alert alert-success">
+        会员专区
+    </div>
+    <ul class="nav nav-pills">
+        <li ng-repeat="num in memberList">{{num}}</li>
+    </ul>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl1',function($scope,$interval){
+            $scope.age = 20;
+            $scope.isMember = false;
+            $scope.memberList = [0.111,0.2242,0.543543,0.3535];
+            $interval(function(){
+                //$scope.age++;
+                $scope.isMember = !$scope.isMember;
+                $scope.memberList.push(Math.random());
+                console.log($scope.isMember);
+                //console.log("age:" + $scope.age);
+            },1000);
+        })
+</script>
+</body>
+</html>

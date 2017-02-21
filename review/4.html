@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+    <script>
+        var salary = 3000;
+        document.write(salary);
+        salary++;
+        setInterval(function(){
+            salary++;
+            console.log("salary:" + salary);
+        },1000)
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>四大特性之 双向数据绑定</h1>
+    <div class="alert alert-info" ng-controller="myCtrl1">
+        <p>Age:{{age}}</p>
+    </div>
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl1',function($scope,$interval){
+            $scope.age = 20;
+            $interval(function(){
+                $scope.age++;
+                console.log("age:" + $scope.age);
+            },1000);
+        })
+</script>
+</body>
+</html>

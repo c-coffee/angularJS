@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    <h1>View数据绑定到Model</h1>
+    <input type="text" class="form-control" ng-model="uName">
+    <input type="checkbox" ng-model="mycb" class="form-control">
+    <input type="radio" name="rdoSex" ng-model="rdoSex" value="male"  >男
+    <input type="radio" name="rdoSex"  ng-model="rdoSex" value="female"  >女<br>
+    <select ng-model="city" ng-options="city.id as city.name for city in list">
+        <option value="">-- 请选择 --</option>
+    </select>
+    <div class="alert alert-info">
+        uName:{{uName}}<br>
+        myCB:{{mycb}}<br>
+        Sex:{{rdoSex}}<br>
+        City:{{city}}
+
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",[]).controller("myCtrl",function($scope){
+        $scope.list=[
+            {
+                id:1,
+                name:'北京'
+            },
+            {
+                id:2,
+                name:'长沙'
+            },
+            {
+                id:3,
+                name:'上海'
+            }];
+        $scope.$watch('uName',function(){
+            console.log($scope.uName);
+        })
+    });
+</script>
+</body>
+</html>

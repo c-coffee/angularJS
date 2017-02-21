@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="myCtrl">
+        <p>公司名称：{{companyName}}</p>
+        <p>注册资本：{{capital}}</p>
+        <p>是否上市：{{isIPO}}</p>
+        <p ng-if="isIPO"><a href="#">上市公司章程</a></p>
+        <p>董事会成员：{{directory}}</p>
+        <ul>
+            <li ng-repeat="member in directory">{{member}}</li>
+        </ul>
+        <p>CEO：{{CEO}}</p>
+        <p>员工清单：{{empList}}</p>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>工资</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>{{empList[0].name}}</td>
+                <td>{{empList[0].age}}</td>
+                <td>{{empList[0].salary}}</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>{{empList[1].name}}</td>
+                <td>{{empList[1].age}}</td>
+                <td>{{empList[1].salary}}</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>{{empList[2].name}}</td>
+                <td>{{empList[2].age}}</td>
+                <td>{{empList[2].salary}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>工资</th>
+            </tr>
+            <tbody>
+            <tr ng-repeat="emp in empList" ng-if="emp.age>18">
+                <td>{{$index+1}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.age}}</td>
+                <td>{{emp.salary}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-controller="myCtrl">
+
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl',function($scope){
+           $scope.companyName = '淘金网';
+           $scope.capital = 100000000;
+           $scope.isIPO = false;
+           $scope.directory = ['牛总','王总','张总','周总'];
+           $scope.CEO = {
+               'name':'牛总',
+               'age':50,
+               'salary':1000000
+           };
+           $scope.empList = [
+               {'name':'小强','age':18,'salary':88888},
+               {'name':'小丽','age':21,'salary':88888},
+               {'name':'小刚','age':22,'salary':88888}
+           ];
+
+        })
+        .controller('myCtrl2',function(){
+            $scope.empList = [
+                {'name':'小强','age':18,'salary':88888},
+                {'name':'小丽','age':21,'salary':88888},
+                {'name':'小刚','age':22,'salary':88888}
+            ];
+        })
+
+</script>
+</body>
+</html>

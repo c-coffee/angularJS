@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" ng-controller="myCtrl1">
+    <h1>点击计数器</h1>
+    <div class="alert alert-info">
+        <button type="button" ng-click="clickCount()" class="btn btn-primary">点我计数</button>
+        <span>{{count}}</span>
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl1',function($scope,$interval){
+            $scope.count = 0;
+            $scope.clickCount = function(){
+                $scope.count++;
+            }
+        })
+</script>
+</body>
+</html>

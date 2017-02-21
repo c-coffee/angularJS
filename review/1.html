@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div ng-controller="myCtrl">
+        <p ng-init="a=10;b=20"></p>
+        <p>{{a+b}}</p>
+        <p>{{ename}}</p>
+        <p>{{age}}</p>
+    </div>
+    <div ng-controller="myCtrl">
+
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl',function($scope){
+            console.log('myCtrl控制器对象开始创建....');
+            console.log($scope);
+            $scope.ename = 'haha';
+            var age = 30; //函数内局部变量
+            console.log('myCtrl控制器对象创建完成....');
+        })
+</script>
+</body>
+</html>

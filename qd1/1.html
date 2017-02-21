@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule1">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body >
+<div class="container" ng-controller="myCtrl">
+<h1 >AngularJS MVC模式之View</h1>
+    {{age}}
+</div>
+<div ng-controller="myCtrl">
+
+</div>
+<hr>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myModule2",['ng']).controller(function(){
+
+    });
+    angular.module("myModule3",['ng']).controller(function(){
+
+    });
+    angular.module("myModule1",['ng','myModule2','myModule3'])
+        .controller('myCtrl',function($scope){
+            $scope.age = 10;
+
+        });
+
+</script>
+</body>
+</html>

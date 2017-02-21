@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "myModule1">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl" class="container">
+    <p class="alert alert-info">{{count}}</p>
+    <button ng-click="clickBtn()" class="btn btn-primary">点击</button>
+    <img ng-src="{{img}}">
+    <button ng-click="prevImg()" class="btn btn-success">前一张</button>
+    <button ng-click="nextImg()" class="btn btn-success">后一张</button>
+</div>
+<button onclick="test()">test</button>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myModule1",[]).controller("myCtrl",function($scope){
+        $scope.count = 0;
+        $scope.imgs = ['1.jpg','2.gif','3.png','4.jpg'];
+        var index = 0;
+        $scope.img = 'img/' + $scope.imgs[index];
+        console.log($scope.img);
+        $scope.prevImg = function(){
+            if(index == 0){
+                index = $scope.imgs.length - 1;
+            }else{
+                index--;
+            }
+            $scope.img = 'img/' +  $scope.imgs[index];
+            console.log($scope.img);
+        }
+        $scope.nextImg = function(){
+            if(index == $scope.imgs.length - 1){
+                index = 0;
+            }else{
+                index++;
+            }
+            $scope.img = 'img/' +  $scope.imgs[index];
+            console.log($scope.img);
+        }
+        $scope.clickBtn = function(){
+            $scope.count++;
+        }
+    });
+    function test(){
+        console.log(index);
+    }
+</script>
+</body>
+</html>

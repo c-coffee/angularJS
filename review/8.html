@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" ng-controller="myCtrl1">
+    <h1>View->Model绑定</h1>
+    <div class="alert alert-info">
+        <input type="text" ng-model="uName">
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp",['ng'])
+        .controller('myCtrl1',function($scope,$interval){
+            $scope.$watch('uName',function(){
+                console.log('uName的值为:' + $scope.uName);
+            });
+        })
+</script>
+</body>
+</html>
