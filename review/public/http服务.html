@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    <h1>http服务</h1>
+    <hr>
+    <div class="media" ng-repeat="pic in data">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" ng-src="{{pic.headpic}}">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{pic.title}}</h4>
+            <p>{{pic.content}}</p>
+        </div>
+    </div>
+
+    <button class="btn btn-default btn-block" ng-click="load()">加载更多</button>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
+
+        $scope.load = function () {
+            $http({
+                method: 'get',
+                url: 'http://127.0.0.1:3000'
+            })
+                .success(function (data) {
+                    $scope.data = $scope.data.concat(data);
+                    console.log($scope.data);
+                });
+        };
+        $http({
+            method: 'get',
+            url: 'http://127.0.0.1:3000'
+        })
+            .success(function (data) {
+                $scope.data = data;
+                console.log(data);
+            });
+    });
+</script>
+</body>
+</html>

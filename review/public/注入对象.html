@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    <h1>可以被注入的对象</h1>
+    <hr>
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp", []).controller("myCtrl", function ($log) {
+        console.log($log);
+        $log.log('一个log级别的日志');
+        $log.debug('一个debug级别的日志');
+        $log.error('一个error级别的日志');
+        $log.info('一个info级别的日志');
+        $log.warn('一个warn级别的日志');
+    });
+</script>
+</body>
+</html>

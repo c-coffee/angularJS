@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container" ng-controller="myCtrl">
+    <h1>AngularJS四大特性之三 - 依赖注入（DI）</h1>
+    <hr>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    angular.module("myApp", []).controller("myCtrl", ["$interval", "$scope", function (i, $scope, $timeout) {
+        console.log('myCtrl对象开始创建......');
+        console.log(arguments);
+        i(function () {
+            console.log("aaaa......");
+            console.log("bbbb......");
+        }, 1000);
+        console.log('myCtrl对象创建完成......');
+    }]);
+</script>
+</body>
+</html>
