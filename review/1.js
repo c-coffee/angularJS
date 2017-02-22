@@ -6,6 +6,7 @@ var app = express();
 
 app.use(express.static("./public"));
 app.get("/", function (req, res) {
+    sleep(3000);
     res.send([
         {
             'mno': Math.ceil(Math.random() * 1000),

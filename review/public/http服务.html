@@ -22,19 +22,24 @@
         </div>
     </div>
 
-    <button class="btn btn-default btn-block" ng-click="load()">加载更多</button>
+    <button class="btn btn-default btn-block" ng-click="load()">
+        <span ng-hide="isLoading">加载更多</span>
+        <img ng-show="isLoading" src="img/loading.gif">
+    </button>
 </div>
 <script src="js/angular.js"></script>
 <script>
     angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
-
+        $scope.isLoading = false;
         $scope.load = function () {
+            $scope.isLoading = true;
             $http({
                 method: 'get',
                 url: 'http://127.0.0.1:3000'
             })
                 .success(function (data) {
                     $scope.data = $scope.data.concat(data);
+                    $scope.isLoading = false;
                     console.log($scope.data);
                 });
         };
