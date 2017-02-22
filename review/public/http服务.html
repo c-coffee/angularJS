@@ -17,14 +17,15 @@
             </a>
         </div>
         <div class="media-body">
-            <h4 class="media-heading">{{pic.title}}</h4>
+            <h4 class="media-heading">{{pic.title | uppercase}}</h4>
+            <p>{{pic.price | currency }}</p>
             <p>{{pic.content}}</p>
         </div>
     </div>
 
-    <button class="btn btn-default btn-block" ng-click="load()">
+    <button ng-disabled="isLoading" class="btn btn-default btn-block" ng-click="load()" >
         <span ng-hide="isLoading">加载更多</span>
-        <img ng-show="isLoading" src="img/loading.gif">
+        <img width="30" ng-show="isLoading" src="img/loading.gif">
     </button>
 </div>
 <script src="js/angular.js"></script>
